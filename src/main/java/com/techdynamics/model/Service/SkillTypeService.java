@@ -15,7 +15,7 @@ import com.techdynamics.model.repository.SkillTypeRepository;
  *
  */
 public class SkillTypeService implements Service<SkillType> {
-	
+
 	@Autowired
 	private SkillTypeRepository skillTypeRepository;
 
@@ -26,13 +26,13 @@ public class SkillTypeService implements Service<SkillType> {
 
 	@Override
 	public SkillType getById(Long id) {
-		
-		return skillTypeRepository.getOne(id);
+		return skillTypeRepository.findById(id)
+				                  .orElse(null);
 	}
 
 	@Override
 	public void update(SkillType entity) {
-		skillTypeRepository.save(entity);	
+		skillTypeRepository.save(entity);
 	}
 
 	@Override
