@@ -6,7 +6,7 @@ import java.util.List;
  * @author syadav
  *
  */
-public interface Service<T> {
+public interface IService<T> {
 	
 	List<T> getAll();
 	

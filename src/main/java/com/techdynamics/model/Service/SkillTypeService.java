@@ -6,6 +6,7 @@ package com.techdynamics.model.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.techdynamics.model.entity.SkillType;
 import com.techdynamics.model.repository.SkillTypeRepository;
@@ -14,7 +15,8 @@ import com.techdynamics.model.repository.SkillTypeRepository;
  * @author syadav
  *
  */
-public class SkillTypeService implements Service<SkillType> {
+@Service
+public class SkillTypeService implements IService<SkillType> {
 
 	@Autowired
 	private SkillTypeRepository skillTypeRepository;
