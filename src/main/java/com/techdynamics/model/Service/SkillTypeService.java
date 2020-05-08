@@ -28,8 +28,7 @@ public class SkillTypeService implements IService<SkillType> {
 
 	@Override
 	public SkillType getById(Long id) {
-		return skillTypeRepository.findById(id)
-				                  .orElse(null);
+		return skillTypeRepository.findById(id).orElse(null);
 	}
 
 	@Override
