@@ -9,38 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techdynamics.employeeskillmanagement.Service.EmployeeService;
-import com.techdynamics.employeeskillmanagement.entity.Employee;
+import com.techdynamics.employeeskillmanagement.Service.SkillTypeService;
+import com.techdynamics.employeeskillmanagement.entity.SkillType;
 
 @RestController
-@RequestMapping(path ="/rest/api/employees")
-public class EmployeeController {
-	
+@RequestMapping(path ="/rest/api/skilltype")
+public class SkillTypeController {
+
 	@Autowired
-	private EmployeeService employeeService;
+	private SkillTypeService skillTypeService;
 	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Employee> getAllEmployees(){
-		return employeeService.getAll();
+	public List<SkillType> getAllSkillType(){
+		return skillTypeService.getAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
-	public Employee getEmployeeById(@PathVariable Long id) {
-		return employeeService.getById(id);
+	public SkillType getSkillTypeById(@PathVariable Long id) {
+		return skillTypeService.getById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public void addEmployee(@RequestBody Employee employee) {
-		employeeService.save(employee);
+	public void addSkillType(@RequestBody SkillType skillType) {
+		skillTypeService.save(skillType);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public void updateEmployee(@RequestBody Employee employee) {
-		employeeService.update(employee);
+	public void updateSkillType(@RequestBody SkillType skillType) {
+		skillTypeService.update(skillType);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
-	public void removeEmployee(@PathVariable Long id) {
-		employeeService.removeById(id);
+	public void removeSkillType(@PathVariable Long id) {
+		skillTypeService.removeById(id);
 	}
 }

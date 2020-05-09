@@ -27,10 +27,7 @@ public class SkillService implements IService<Skill> {
 
 	@Override
 	public List<Skill> getAll() {
-		List<Skill> list = new ArrayList<>();
-		 skillRepository.findAll()
-		                 .forEach(skill -> list.add(skill));
-      return list;
+      return skillRepository.findAll();
 	}
 
 	@Override

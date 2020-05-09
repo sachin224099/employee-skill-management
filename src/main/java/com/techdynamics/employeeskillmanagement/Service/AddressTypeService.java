@@ -25,10 +25,7 @@ public class AddressTypeService implements IService<AddressType> {
 
 	@Override
 	public List<AddressType> getAll() {
-		List<AddressType> list = new ArrayList<>();
-		 addressTypeRepository.findAll()
-				.forEach(addt -> list.add(addt));
-		return list;
+		return  addressTypeRepository.findAll();
 	}
 
 	@Override

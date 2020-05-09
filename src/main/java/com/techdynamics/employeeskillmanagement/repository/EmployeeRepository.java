@@ -3,8 +3,7 @@
  */
 package com.techdynamics.employeeskillmanagement.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.techdynamics.employeeskillmanagement.entity.Employee;
 
@@ -13,6 +12,6 @@ import com.techdynamics.employeeskillmanagement.entity.Employee;
  *
  */
 
-public interface EmployeeRepository extends CrudRepository<Employee, Long>{
+public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
 }

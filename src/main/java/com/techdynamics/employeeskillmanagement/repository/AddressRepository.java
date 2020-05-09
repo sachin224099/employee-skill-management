@@ -3,7 +3,7 @@
  */
 package com.techdynamics.employeeskillmanagement.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.techdynamics.employeeskillmanagement.entity.Address;
 
@@ -12,6 +12,6 @@ import com.techdynamics.employeeskillmanagement.entity.Address;
  *
  */
 
-public interface AddressRepository extends CrudRepository<Address, Long>{
+public interface AddressRepository extends JpaRepository<Address, Long>{
 
 }

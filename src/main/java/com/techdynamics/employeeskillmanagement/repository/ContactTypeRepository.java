@@ -3,7 +3,7 @@
  */
 package com.techdynamics.employeeskillmanagement.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.techdynamics.employeeskillmanagement.entity.ContactType;
 
@@ -12,6 +12,6 @@ import com.techdynamics.employeeskillmanagement.entity.ContactType;
  *
  */
 
-public interface ContactTypeRepository extends CrudRepository<ContactType, Long>{
+public interface ContactTypeRepository extends JpaRepository<ContactType, Long>{
 
 }

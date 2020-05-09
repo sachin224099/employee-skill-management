@@ -7,19 +7,23 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author syadav
  *
  */
 @Entity
+@Table(name = "employee")
 public class Employee {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String firstName;
 	private String middleName;
@@ -27,13 +31,13 @@ public class Employee {
 	private Date dateOfBirth;
 	private Date dateOfJoining;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
 	private List<Contact> contacts;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
 	private List<Address> addresses;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
 	private List<Skill> skills;
 
 	public Long getId() {

@@ -26,10 +26,7 @@ public class ContactTypeService implements IService<ContactType> {
 
 	@Override
 	public List<ContactType> getAll() {
-		List<ContactType> list = new ArrayList<>();
-		 contactTypeRepository.findAll()
-	                              .forEach(conT -> list.add(conT));
-		 return list;
+		 return  contactTypeRepository.findAll();
 	}
 
 	@Override

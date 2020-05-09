@@ -26,10 +26,7 @@ public class EmployeeService implements IService<Employee> {
 
 	@Override
 	public List<Employee> getAll() {
-		List<Employee> list = new ArrayList<>();
-		 employeeRepository.findAll()
-		                 .forEach(emp -> list.add(emp));
-		 return list;
+		 return employeeRepository.findAll();
 	}
 
 	@Override
