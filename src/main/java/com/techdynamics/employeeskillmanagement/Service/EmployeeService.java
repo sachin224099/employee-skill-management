@@ -1,16 +1,17 @@
 /**
  * 
  */
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techdynamics.model.entity.Employee;
-import com.techdynamics.model.repository.ContactTypeRepository;
-import com.techdynamics.model.repository.EmployeeRepository;
+import com.techdynamics.employeeskillmanagement.entity.Address;
+import com.techdynamics.employeeskillmanagement.entity.Employee;
+import com.techdynamics.employeeskillmanagement.repository.EmployeeRepository;
 
 /**
  * @author aditya raj
@@ -25,7 +26,10 @@ public class EmployeeService implements IService<Employee> {
 
 	@Override
 	public List<Employee> getAll() {
-		return employeeRepository.findAll();
+		List<Employee> list = new ArrayList<>();
+		 employeeRepository.findAll()
+		                 .forEach(emp -> list.add(emp));
+		 return list;
 	}
 
 	@Override

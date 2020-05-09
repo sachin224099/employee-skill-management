@@ -1,4 +1,4 @@
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
 import java.util.List;
 

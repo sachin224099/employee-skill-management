@@ -1,4 +1,4 @@
-package com.techdynamics.model.entity;
+package com.techdynamics.employeeskillmanagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,13 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 /**
  * @author syadav
  *
  */
 @Entity
-public class Address {
+public class Address{
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -25,6 +27,22 @@ public class Address {
 	@ManyToOne
 	private AddressType addressType;
 	
+	public Address() {
+		super();
+	}
+	
+	public Address(Long id, String addressLineOne, String addressLineTwo, String city, String state, String pinCode,
+			AddressType addressType) {
+		super();
+		this.id = id;
+		this.addressLineOne = addressLineOne;
+		this.addressLineTwo = addressLineTwo;
+		this.city = city;
+		this.state = state;
+		this.pinCode = pinCode;
+		this.addressType = addressType;
+	}
+
 	public Long getId() {
 		return id;
 	}

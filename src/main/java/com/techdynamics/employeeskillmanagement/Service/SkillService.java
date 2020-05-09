@@ -1,15 +1,17 @@
 /**
  * 
  */
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techdynamics.model.entity.Skill;
-import com.techdynamics.model.repository.SkillRepository;
+import com.techdynamics.employeeskillmanagement.entity.Address;
+import com.techdynamics.employeeskillmanagement.entity.Skill;
+import com.techdynamics.employeeskillmanagement.repository.SkillRepository;
 
 
 /**
@@ -25,7 +27,10 @@ public class SkillService implements IService<Skill> {
 
 	@Override
 	public List<Skill> getAll() {
-		return skillRepository.findAll();
+		List<Skill> list = new ArrayList<>();
+		 skillRepository.findAll()
+		                 .forEach(skill -> list.add(skill));
+      return list;
 	}
 
 	@Override

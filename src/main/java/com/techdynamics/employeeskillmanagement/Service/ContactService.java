@@ -1,15 +1,17 @@
 /**
  * 
  */
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.ls.LSInput;
 
-import com.techdynamics.model.entity.Contact;
-import com.techdynamics.model.repository.ContactRepository;
+import com.techdynamics.employeeskillmanagement.entity.Contact;
+import com.techdynamics.employeeskillmanagement.repository.ContactRepository;
 
 /**
  * @author aditya raj
@@ -24,7 +26,10 @@ public class ContactService implements IService<Contact> {
 
 	@Override
 	public List<Contact> getAll() {
-		return contactRepository.findAll();
+		List<Contact> list =new ArrayList<>();
+		 contactRepository.findAll()
+		                    .forEach(con -> list.add(con));
+		 return list;
 	}
 
 	@Override

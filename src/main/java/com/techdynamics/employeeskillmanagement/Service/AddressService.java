@@ -1,15 +1,16 @@
 /**
  * 
  */
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techdynamics.model.entity.Address;
-import com.techdynamics.model.repository.AddressRepository;
+import com.techdynamics.employeeskillmanagement.entity.Address;
+import com.techdynamics.employeeskillmanagement.repository.AddressRepository;
 
 /**
  * @author aditya raj
@@ -23,7 +24,10 @@ public class AddressService implements IService<Address> {
 
 	@Override
 	public List<Address> getAll() {
-		return addressRepository.findAll();
+		List<Address> list = new ArrayList<>();
+		 addressRepository.findAll()
+				                .forEach(add -> list.add(add));
+		 return list;
 	}
 
 	@Override

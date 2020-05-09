@@ -1,4 +1,7 @@
-package com.techdynamics.model.entity;
+/**
+ * 
+ */
+package com.techdynamics.employeeskillmanagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,15 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @author aditya raj
+ * @author syadav
  *
  */
 @Entity
-public class SkillType {
-
+public class ContactType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private String type;
 
 	public Long getId() {
@@ -32,5 +35,6 @@ public class SkillType {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
+	
 }

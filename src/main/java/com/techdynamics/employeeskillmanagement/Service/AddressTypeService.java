@@ -1,15 +1,17 @@
 /**
  * 
  */
-package com.techdynamics.model.Service;
+package com.techdynamics.employeeskillmanagement.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.ls.LSInput;
 
-import com.techdynamics.model.entity.AddressType;
-import com.techdynamics.model.repository.AddressTypeRepository;
+import com.techdynamics.employeeskillmanagement.entity.AddressType;
+import com.techdynamics.employeeskillmanagement.repository.AddressTypeRepository;
 
 /**
  * @author aditya raj
@@ -23,7 +25,10 @@ public class AddressTypeService implements IService<AddressType> {
 
 	@Override
 	public List<AddressType> getAll() {
-		return addressTypeRepository.findAll();
+		List<AddressType> list = new ArrayList<>();
+		 addressTypeRepository.findAll()
+				.forEach(addt -> list.add(addt));
+		return list;
 	}
 
 	@Override

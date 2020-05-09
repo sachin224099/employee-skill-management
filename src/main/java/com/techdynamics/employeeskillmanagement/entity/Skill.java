@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.techdynamics.model.entity;
+package com.techdynamics.employeeskillmanagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +23,9 @@ public class Skill {
 	private String skillName;
 
 	@ManyToOne
-	private String skillType;
+	private SkillType skillType;
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -33,20 +34,21 @@ public class Skill {
 		this.id = id;
 	}
 
-	public String getSkillType() {
-		return skillType;
-	}
-
-	public void setSkillType(String skillType) {
-		this.skillType = skillType;
-	}
-
+	
 	public String getSkillName() {
 		return skillName;
 	}
 
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
+	}
+	
+	public SkillType getSkillType() {
+		return skillType;
+	}
+
+	public void setSkillType(SkillType skillType) {
+		this.skillType = skillType;
 	}
 
 }

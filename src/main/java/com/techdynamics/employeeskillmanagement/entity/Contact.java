@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.techdynamics.model.entity;
+package com.techdynamics.employeeskillmanagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
