@@ -3,9 +3,6 @@
  */
 package com.techdynamics.employeeskillmanagement.Service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techdynamics.employeeskillmanagement.entity.Contact;
@@ -17,44 +14,9 @@ import com.techdynamics.employeeskillmanagement.repository.ContactRepository;
  */
 
 @Service
-public class ContactService implements IService<Contact> {
+public class ContactService extends BaseService<Contact> {
 
-	@Autowired
-	private ContactRepository contactRepository;
-
-	@Override
-	public List<Contact> getAll() {
-
-		 return contactRepository.findAll();
+	public ContactService(ContactRepository contactRepository) {
+		super(contactRepository);
 	}
-
-	@Override
-	public Contact getById(Long id) {
-		return contactRepository.findById(id).orElse(null);
-	}
-
-	@Override
-	public void update(Contact entity) {
-		contactRepository.save(entity);
-
-	}
-
-	@Override
-	public void save(Contact entity) {
-		contactRepository.save(entity);
-
-	}
-
-	@Override
-	public void removeById(Long id) {
-		contactRepository.deleteById(id);
-
-	}
-
-	@Override
-	public void remove(Contact entity) {
-		contactRepository.delete(entity);
-
-	}
-
 }

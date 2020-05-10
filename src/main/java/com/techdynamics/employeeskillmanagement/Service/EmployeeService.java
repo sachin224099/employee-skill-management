@@ -3,9 +3,6 @@
  */
 package com.techdynamics.employeeskillmanagement.Service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techdynamics.employeeskillmanagement.entity.Employee;
@@ -17,43 +14,10 @@ import com.techdynamics.employeeskillmanagement.repository.EmployeeRepository;
  */
 
 @Service
-public class EmployeeService implements IService<Employee> {
+public class EmployeeService extends BaseService<Employee> {
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
-
-	@Override
-	public List<Employee> getAll() {
-		 return employeeRepository.findAll();
-	}
-
-	@Override
-	public Employee getById(Long id) {
-		return employeeRepository.findById(id).orElse(null);
-	}
-
-	@Override
-	public void update(Employee entity) {
-		employeeRepository.save(entity);
-
-	}
-
-	@Override
-	public void save(Employee entity) {
-		employeeRepository.save(entity);
-
-	}
-
-	@Override
-	public void removeById(Long id) {
-		employeeRepository.deleteById(id);
-
-	}
-
-	@Override
-	public void remove(Employee entity) {
-		employeeRepository.delete(entity);
-
+	public EmployeeService(EmployeeRepository employeeRepository) {
+		super(employeeRepository);
 	}
 
 }
