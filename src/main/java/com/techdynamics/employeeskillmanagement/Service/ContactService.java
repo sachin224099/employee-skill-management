@@ -3,12 +3,10 @@
  */
 package com.techdynamics.employeeskillmanagement.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.ls.LSInput;
 
 import com.techdynamics.employeeskillmanagement.entity.Contact;
 import com.techdynamics.employeeskillmanagement.repository.ContactRepository;

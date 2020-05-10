@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techdynamics.employeeskillmanagement.Service.EmployeeService;
 import com.techdynamics.employeeskillmanagement.entity.Employee;
 
+/**
+ * @author syadav
+ *
+ */
 @RestController
 @RequestMapping(path ="/rest/api/employees")
 public class EmployeeController extends BaseController<Employee>{

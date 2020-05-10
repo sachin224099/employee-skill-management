@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techdynamics.employeeskillmanagement.Service.AddressTypeService;
 import com.techdynamics.employeeskillmanagement.entity.AddressType;
 
+/**
+ * @author syadav
+ *
+ */
 @RestController
 @RequestMapping(path ="/rest/api/addresstype")
 public class AddressTypeController extends BaseController<AddressType>{

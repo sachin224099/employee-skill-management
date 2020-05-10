@@ -3,13 +3,11 @@
  */
 package com.techdynamics.employeeskillmanagement.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techdynamics.employeeskillmanagement.entity.Address;
 import com.techdynamics.employeeskillmanagement.entity.Employee;
 import com.techdynamics.employeeskillmanagement.repository.EmployeeRepository;
 

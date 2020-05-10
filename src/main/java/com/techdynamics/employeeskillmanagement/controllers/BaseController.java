@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.techdynamics.employeeskillmanagement.Service.IService;
 
+/**
+ * @author syadav
+ *
+ * @param <T>
+ */
 public abstract class BaseController<T> {
 	
 	private IService<T> service;
