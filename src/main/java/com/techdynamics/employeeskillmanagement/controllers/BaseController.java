@@ -30,7 +30,7 @@ public abstract class BaseController<T> {
 	
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<T> getAllT(){
+	public List<T> getAll(){
 		return service.getAll();
 	}
 	
@@ -40,13 +40,13 @@ public abstract class BaseController<T> {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public void add(@RequestBody T addressType) {
-		service.save(addressType);
+	public void add(@RequestBody T entity) {
+		service.save(entity);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public void update(@RequestBody T addressType) {
-		service.update(addressType);
+	public void update(@RequestBody T entity) {
+		service.update(entity);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
