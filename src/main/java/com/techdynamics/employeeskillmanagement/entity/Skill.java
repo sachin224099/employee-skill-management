@@ -3,6 +3,8 @@
  */
 package com.techdynamics.employeeskillmanagement.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author aditya raj
  *
@@ -19,8 +24,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "skill")
-public class Skill {
+public class Skill implements Serializable{
 
+	private static final long serialVersionUID = 579719014686168909L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,6 +34,7 @@ public class Skill {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "employee_id", nullable = false)
+	@JsonBackReference
 	private Employee employee;
 
 	@ManyToOne

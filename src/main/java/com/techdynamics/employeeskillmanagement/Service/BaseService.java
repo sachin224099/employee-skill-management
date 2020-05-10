@@ -50,4 +50,8 @@ public abstract class BaseService<T> implements IService<T> {
 
 	}
 
+	public JpaRepository<T, Long> getRepository() {
+		return repository;
+	}
+
 }

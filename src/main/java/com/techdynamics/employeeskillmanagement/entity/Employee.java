@@ -3,6 +3,7 @@
  */
 package com.techdynamics.employeeskillmanagement.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,9 +12,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * @author syadav
@@ -21,7 +24,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee implements Serializable{
+
+	private static final long serialVersionUID = 3816663760426613450L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -32,12 +37,15 @@ public class Employee {
 	private Date dateOfJoining;
 	
 	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Contact> contacts;
 	
 	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Address> addresses;
 	
 	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Skill> skills;
 
 	public Long getId() {

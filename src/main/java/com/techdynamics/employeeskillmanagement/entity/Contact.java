@@ -3,6 +3,8 @@
  */
 package com.techdynamics.employeeskillmanagement.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,13 +14,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author syadav
  *
  */
 @Entity
 @Table(name = "contact")
-public class Contact {
+public class Contact implements Serializable{
+
+	private static final long serialVersionUID = 6004148868943096909L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,6 +34,7 @@ public class Contact {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "employee_id", nullable = false)
+	@JsonBackReference
 	private Employee employee;
 	
 	@ManyToOne

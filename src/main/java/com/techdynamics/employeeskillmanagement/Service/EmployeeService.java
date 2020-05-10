@@ -19,5 +19,9 @@ public class EmployeeService extends BaseService<Employee> {
 	public EmployeeService(EmployeeRepository employeeRepository) {
 		super(employeeRepository);
 	}
+	
+	public boolean isEmployeeExistById(Long id) {
+		return getRepository().existsById(id);
+	}
 
 }

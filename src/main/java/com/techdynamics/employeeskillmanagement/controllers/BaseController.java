@@ -2,6 +2,7 @@ package com.techdynamics.employeeskillmanagement.controllers;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.techdynamics.employeeskillmanagement.Service.IService;
 public abstract class BaseController<T> {
 	
 	private IService<T> service;
+	
 	
 	public BaseController() {
 		super();
@@ -39,7 +41,7 @@ public abstract class BaseController<T> {
 		return service.getById(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, consumes = {"application/json"})
 	public void add(@RequestBody T entity) {
 		service.save(entity);
 	}
@@ -54,5 +56,7 @@ public abstract class BaseController<T> {
 		service.removeById(id);
 	}
 	
-	
+	public IService<T> getService() {
+		return service;
+	}
 }

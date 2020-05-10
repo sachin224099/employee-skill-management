@@ -1,5 +1,7 @@
 package com.techdynamics.employeeskillmanagement.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +14,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "address_type")
-public class AddressType {
-	
+public class AddressType implements Serializable{
+
+	private static final long serialVersionUID = -5196654966651282621L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
