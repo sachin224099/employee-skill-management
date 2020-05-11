@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techdynamics.employeeskillmanagement.Service.AddressService;
 import com.techdynamics.employeeskillmanagement.Service.ContactService;
 import com.techdynamics.employeeskillmanagement.Service.EmployeeService;
+import com.techdynamics.employeeskillmanagement.Service.SkillService;
 import com.techdynamics.employeeskillmanagement.entity.Address;
 import com.techdynamics.employeeskillmanagement.entity.Contact;
 import com.techdynamics.employeeskillmanagement.entity.Employee;
+import com.techdynamics.employeeskillmanagement.entity.Skill;
 import com.techdynamics.employeeskillmanagement.messages.Message;
 
 /**
@@ -30,14 +32,18 @@ public class EmployeeController extends BaseController<Employee> {
 
 	@Autowired
 	private ContactService contactService;
-	
+
 	@Autowired
 	private AddressService addressService;
+
+	@Autowired
+	private SkillService skillService;
 
 	public EmployeeController(EmployeeService employeeService) {
 		super(employeeService);
 		this.employeeService = employeeService;
 	}
+
 
 	@RequestMapping(path = "{employeeId}/contact", method = RequestMethod.POST)
 	public Message addContact(@PathVariable Long employeeId, @RequestBody Contact contact) {
@@ -46,23 +52,21 @@ public class EmployeeController extends BaseController<Employee> {
 			contact.setEmployee(employee);
 			contactService.save(contact);
 			return new Message("Contact saved");
-		}
-		else {
+		} else {
 			return new Message("Contact not saved");
 		}
 	}
-	
+
 	@RequestMapping(path = "{employeeId}/contact", method = RequestMethod.GET)
-	public List<Contact> getAllContactsByEmployeeId(@PathVariable Long employeeId){
+	public List<Contact> getAllContactsByEmployeeId(@PathVariable Long employeeId) {
 		if (employeeService.isEmployeeExistById(employeeId)) {
 			Employee employee = employeeService.getById(employeeId);
 			return contactService.getContactsByEmployee(employee);
-		}
-		else {
+		} else {
 			return new ArrayList<>();
 		}
 	}
-	
+
 	@RequestMapping(path = "{employeeId}/address", method = RequestMethod.POST)
 	public Message addAddress(@PathVariable Long employeeId, @RequestBody Address address) {
 		if (employeeService.isEmployeeExistById(employeeId)) {
@@ -70,21 +74,41 @@ public class EmployeeController extends BaseController<Employee> {
 			address.setEmployee(employee);
 			addressService.save(address);
 			return new Message("Address saved");
-		}
-		else {
+		} else {
 			return new Message("Address not saved");
 		}
 	}
-	
+
 	@RequestMapping(path = "{employeeId}/address", method = RequestMethod.GET)
-	public List<Address> getAllAddressesByEmployeeId(@PathVariable Long employeeId){
+	public List<Address> getAllAddressesByEmployeeId(@PathVariable Long employeeId) {
 		if (employeeService.isEmployeeExistById(employeeId)) {
 			Employee employee = employeeService.getById(employeeId);
 			return addressService.getAddressesByEmployee(employee);
-		}
-		else {
+		} else {
 			return new ArrayList<>();
 		}
 	}
-	
+
+	@RequestMapping(path = "{employeeId}/skill", method = RequestMethod.POST)
+	public Message addSkill(@PathVariable Long employeeId, @RequestBody Skill skill) {
+		if (employeeService.isEmployeeExistById(employeeId)) {
+			Employee employee = employeeService.getById(employeeId);
+			skill.setEmployee(employee);
+			skillService.save(skill);
+			return new Message("Skill saved");
+		} else {
+			return new Message("Skill not saved");
+		}
+	}
+
+	@RequestMapping(path = "{employeeId}/skill", method = RequestMethod.GET)
+	public List<Skill> getAllSkillsByEmployeeId(@PathVariable Long employeeId) {
+		if (employeeService.isEmployeeExistById(employeeId)) {
+			Employee employee = employeeService.getById(employeeId);
+			return skillService.getSkillsByEmployee(employee);
+		} else {
+			return new ArrayList<>();
+		}
+	}
+
 }

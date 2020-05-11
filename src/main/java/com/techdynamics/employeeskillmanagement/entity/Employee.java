@@ -4,6 +4,7 @@
 package com.techdynamics.employeeskillmanagement.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -97,6 +97,8 @@ public class Employee implements Serializable{
 	}
 
 	public List<Contact> getContacts() {
+		if(contacts == null)
+			return new ArrayList<Contact>();
 		return contacts;
 	}
 
@@ -105,6 +107,9 @@ public class Employee implements Serializable{
 	}
 
 	public List<Address> getAddresses() {
+		if(addresses == null)
+		return new ArrayList<Address>();
+		
 		return addresses;
 	}
 
@@ -113,6 +118,8 @@ public class Employee implements Serializable{
 	}
 
 	public List<Skill> getSkills() {
+		if(skills == null)
+			return new ArrayList<Skill>();
 		return skills;
 	}
 
