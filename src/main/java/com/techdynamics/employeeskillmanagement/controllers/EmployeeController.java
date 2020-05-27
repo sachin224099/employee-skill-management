@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,17 +81,17 @@ public class EmployeeController extends BaseController<Employee> {
 		}
 	}
 
-	@RequestMapping(path = "{employeeId}/address", method = RequestMethod.GET)
-	public List<Address> getAllAddressesByEmployeeId(@PathVariable Long employeeId) {
+	@RequestMapping(path = "{employeeId}/addresses", method = RequestMethod.GET)
+	public ResponseEntity<List<Address>> getAllAddressesByEmployeeId(@PathVariable Long employeeId) {
 		if (employeeService.isEmployeeExistById(employeeId)) {
 			Employee employee = employeeService.getById(employeeId);
-			return addressService.getAddressesByEmployee(employee);
+			return new ResponseEntity<>(addressService.getAddressesByEmployee(employee), HttpStatus.FOUND);
 		} else {
-			return new ArrayList<>();
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
 
-	@RequestMapping(path = "{employeeId}/skill", method = RequestMethod.POST)
+	@RequestMapping(path = "{employeeId}/skills", method = RequestMethod.POST)
 	public Message addSkill(@PathVariable Long employeeId, @RequestBody Skill skill) {
 		if (employeeService.isEmployeeExistById(employeeId)) {
 			Employee employee = employeeService.getById(employeeId);
