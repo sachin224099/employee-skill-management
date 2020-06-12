@@ -28,15 +28,13 @@ public abstract class BaseController<T> {
 		this.service = service;
 	}
 
-	
-
 	@RequestMapping(method = RequestMethod.GET)
 	public List<T> getAll(){
 		return service.getAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
-	public T getById(@PathVariable Long id) {
+	public T getById(@PathVariable("id") Long id) {
 		return service.getById(id);
 	}
 	

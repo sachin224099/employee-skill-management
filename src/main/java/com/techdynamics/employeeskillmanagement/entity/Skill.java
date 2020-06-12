@@ -16,11 +16,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Builder;
+
 /**
  * @author aditya raj
  *
  */
-
+@Builder
 @Entity
 @Table(name = "skill")
 public class Skill implements Serializable{

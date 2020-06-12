@@ -11,7 +11,7 @@ import com.techdynamics.employeeskillmanagement.entity.Skill;
  *
  */
 @RestController
-@RequestMapping(path ="/rest/api/skill")
+@RequestMapping(path ="/rest/api/skills")
 public class SkillController extends BaseController<Skill>{
 	
 	public SkillController(SkillService skillService) {
