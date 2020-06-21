@@ -2,12 +2,12 @@ package com.techdynamics.employeeskillmanagement.models;
 
 public class AuthenticationRequest {
     private String username;
-    private String pasword;
+    private String password;
     
-	public AuthenticationRequest(String username, String pasword) {
+	public AuthenticationRequest(String username, String password) {
 		super();
 		this.username = username;
-		this.pasword = pasword;
+		this.password = password;
 	}
 	
 	public AuthenticationRequest() {
@@ -20,11 +20,11 @@ public class AuthenticationRequest {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPasword() {
-		return pasword;
+	public String getPassword() {
+		return password;
 	}
-	public void setPasword(String pasword) {
-		this.pasword = pasword;
+	public void setPasword(String password) {
+		this.password = password;
 	}
     
     

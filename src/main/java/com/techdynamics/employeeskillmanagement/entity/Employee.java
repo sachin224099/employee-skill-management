@@ -18,12 +18,15 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.NoArgsConstructor;
+
 /**
  * @author syadav
  *
  */
 @Entity
 @Table(name = "employee")
+@NoArgsConstructor
 public class Employee implements Serializable{
 
 	private static final long serialVersionUID = 3816663760426613450L;

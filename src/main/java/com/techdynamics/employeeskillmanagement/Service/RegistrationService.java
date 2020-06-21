@@ -11,8 +11,9 @@ import com.techdynamics.employeeskillmanagement.repository.UserRepository;
 public class RegistrationService extends BaseService<User>{
 
 	private UserRepository userRepository;
+	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private PasswordEncoder bycrptEncoder;
 	
 	public RegistrationService(UserRepository userRepository) {
 		super(userRepository);
@@ -21,7 +22,7 @@ public class RegistrationService extends BaseService<User>{
 	
 	@Override
 	public void save(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(bycrptEncoder.encode(user.getPassword()));
 		super.save(user);
 	}
 }

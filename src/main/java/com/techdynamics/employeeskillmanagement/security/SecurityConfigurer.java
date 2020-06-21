@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
@@ -16,6 +18,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService myUserDetailsService;
+	
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
 
@@ -26,9 +29,17 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/rest/api/authenticate").permitAll().anyRequest().authenticated()
-		.and().sessionManagement()
-		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.csrf()
+		    .disable()
+		    .authorizeRequests()
+		    .antMatchers("/rest/api/authenticate", "/rest/api/register")
+		    .permitAll()
+		    .anyRequest()
+		    .authenticated()
+		    .and()
+		    .sessionManagement()
+		    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 
@@ -37,8 +48,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	/*
-	 * @Bean public PasswordEncoder passwordEncoder() { return
-	 * NoOpPasswordEncoder.getInstance(); }
-	 */
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 }

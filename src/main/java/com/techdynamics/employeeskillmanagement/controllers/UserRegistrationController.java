@@ -13,4 +13,6 @@ public class UserRegistrationController extends BaseController<User> {
 	public UserRegistrationController(RegistrationService registrationService) {
 		super(registrationService);
 	}
+	
+	
 }

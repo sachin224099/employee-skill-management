@@ -16,15 +16,19 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 /**
  * @author aditya raj
  *
  */
-@Builder
 @Entity
 @Table(name = "skill")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Skill implements Serializable{
 
 	private static final long serialVersionUID = 579719014686168909L;

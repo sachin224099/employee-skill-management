@@ -33,7 +33,7 @@ public class AuthenticationController {
 			throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					authenticationRequest.getUsername(), authenticationRequest.getPasword()));
+					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
 		} catch (BadCredentialsException e) {
 			throw new Exception("Incorrect username or password " + e);
 		}
