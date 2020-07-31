@@ -34,8 +34,13 @@ public abstract class BaseController<T> {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
-	public T getById(@PathVariable("id") Long id) {
-		return service.getById(id);
+	public T getById(@PathVariable("id") Long id) throws Exception {
+		T t = service.getById(id);
+		
+		if(t == null) {
+			throw new Exception(id + " Not Found !!!");
+		}
+		return t;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = {"application/json"})

@@ -1,0 +1,10 @@
+applications:
+  - name: employee-skill-management
+    memory: 768M
+    instances: 1
+    path: target\employee-skill-management-0.0.1-SNAPSHOT.jar
+    random-route: true
+    services:
+      - mysqldb
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack.git
